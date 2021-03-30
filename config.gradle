@@ -1,0 +1,41 @@
+ext {
+    //android开发版本配置
+    android = [
+            compileSdkVersion: 29,
+            buildToolsVersion: "29.0.3",
+            applicationId    : "com.tommy.shen.wanandroidkt",
+            minSdkVersion    : 21,
+            targetSdkVersion : 29,
+    ]
+    //version配置
+    versions = [
+            "paging_version": "3.0.0-alpha12",
+            "room_version"  : "2.2.5"
+    ]
+    //androidx配置
+    androidx = [
+            "lifecycle-runtime"  : "androidx.lifecycle:lifecycle-runtime-ktx:2.3.0-beta01",
+            "lifecycle-viewmodel": "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0-beta01",
+            "activity"           : "androidx.activity:activity-ktx:1.1.0",
+            "fragment"           : "androidx.fragment:fragment-ktx:1.2.5",
+            "constraintlayout"   : "androidx.constraintlayout:constraintlayout:2.0.1",
+            "material"           : "com.google.android.material:material:1.2.1",
+            "swiperefreshlayout" : "androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01",
+            "paging"             : "androidx.paging:paging-runtime:${versions["paging_version"]}",
+            "room"               : "androidx.room:room-runtime:${versions["room_version"]}",
+            "room-compiler"      : "androidx.room:room-compiler:${versions["room_version"]}",
+            "room-ktx"           : "androidx.room:room-ktx:${versions["room_version"]}",
+    ]
+    dependencies = [
+            "glide"              : "com.github.bumptech.glide:glide:4.11.0",
+            "glide-compiler"     : "com.github.bumptech.glide:compiler:4.11.0",
+            //阿里路由框架
+            "arouter_api"        : "com.alibaba:arouter-api:1.5.1",
+            "arouter_compiler"   : "com.alibaba:arouter-compiler:1.5.1",
+
+            "moshi"              : "com.squareup.moshi:moshi-kotlin:1.11.0",
+            "retrofit"           : "com.squareup.retrofit2:retrofit:2.9.0",
+            "converter-moshi"    : "com.squareup.retrofit2:converter-moshi:2.9.0",
+            "logging-interceptor": "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2",
+    ]
+}
