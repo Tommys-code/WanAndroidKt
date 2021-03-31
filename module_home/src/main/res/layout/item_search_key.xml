@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="name"
+            type="String" />
+
+    </data>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="9dp"
+        android:layout_marginBottom="9dp"
+        android:background="@drawable/search_key_bg"
+        android:padding="9dp"
+        android:text="@{name}"
+        android:textColor="#666"
+        android:textSize="@dimen/sp12"
+        tools:text="会员优惠" />
+
+</layout>

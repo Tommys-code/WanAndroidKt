@@ -5,7 +5,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.bumptech.glide.Glide
+import com.google.android.material.appbar.AppBarLayout
 import com.tommy.shen.module_common.base.BaseFragment
 import com.tommy.shen.module_common.constant.Home
 import com.tommy.shen.module_common.util.init
@@ -30,9 +32,15 @@ class HomeFragment : BaseFragment<FragHomeBinding>() {
     override fun getLayoutId(): Int = R.layout.frag_home
 
     override fun onCreate() {
-        binding.titleBar.init("首页")
+        binding.titleBar.init(R.string.home_title, R.drawable.home_ic_search) {
+            ARouter.getInstance().build(Home.SEARCH_PAGE).navigation()
+        }
         binding.refresh.init { loadData() }
         binding.articleRecycle.adapter = adapter
+
+        binding.appbar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, verticalOffset ->
+            binding.refresh.isEnabled = verticalOffset >= 0
+        })
 
         viewModel.getBanner().observe(viewLifecycleOwner, Observer {
             initBanner(it)
@@ -64,12 +72,7 @@ class HomeFragment : BaseFragment<FragHomeBinding>() {
                 }
             }.apply {
                 setOnBannerListener { data, _ ->
-                    openWeb(
-                        this@HomeFragment.requireContext(),
-                        (data as BannerData).url,
-                        data.title,
-                        data.id
-                    )
+                    openWeb((data as BannerData).url, data.title, data.id)
                 }
             }
             addBannerLifecycleObserver(this@HomeFragment)

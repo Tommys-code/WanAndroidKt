@@ -4,8 +4,8 @@ import com.tommy.shen.module_common.data.BaseListData
 import com.tommy.shen.module_common.data.BaseResult
 import com.tommy.shen.module_home.data.ArticleData
 import com.tommy.shen.module_home.data.BannerData
-import retrofit2.http.GET
-import retrofit2.http.Path
+import com.tommy.shen.module_home.data.SearchKeyData
+import retrofit2.http.*
 
 interface HomeService {
 
@@ -22,4 +22,20 @@ interface HomeService {
      */
     @GET("banner/json")
     suspend fun getBanner(): BaseResult<List<BannerData>>
+
+    /**
+     * 搜索热词
+     * https://www.wanandroid.com/hotkey/json
+     */
+    @GET("hotkey/json")
+    suspend fun getHotKey(): BaseResult<List<SearchKeyData>>
+
+    /**
+     *
+     */
+    @POST("article/query/{pageNum}/json")
+    suspend fun queryArticle(
+        @Path("pageNum") pageNum: Int,
+        @Query("k") k: String
+    ): BaseResult<BaseListData<ArticleData>>
 }

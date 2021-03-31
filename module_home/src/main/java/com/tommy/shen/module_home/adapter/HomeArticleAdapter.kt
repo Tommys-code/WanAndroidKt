@@ -2,6 +2,7 @@ package com.tommy.shen.module_home.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.tommy.shen.module_common.base.BasePagingRecycleAdapter
+import com.tommy.shen.module_common.util.openWeb
 import com.tommy.shen.module_home.R
 import com.tommy.shen.module_home.data.ArticleData
 import com.tommy.shen.module_home.databinding.ItemArticleBinding
@@ -20,6 +21,7 @@ class HomeArticleAdapter : BasePagingRecycleAdapter<ArticleData, ItemArticleBind
     override fun onBindViewHolderCompat(binding: ItemArticleBinding, position: Int) {
         getItem(position)?.run {
             binding.data = this
+            binding.root.setOnClickListener { openWeb(link, title, id) }
         }
     }
 

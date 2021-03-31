@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tommy.shen.module_home">
-
-    /
+    <application>
+        <activity android:name=".act.SearchAct"/>
+        <activity android:name=".act.SearchResultAct"/>
+    </application>
 </manifest>

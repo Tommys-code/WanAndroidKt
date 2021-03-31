@@ -14,11 +14,11 @@ import com.tencent.smtt.sdk.WebChromeClient
 import com.tencent.smtt.sdk.WebView
 import com.tommy.shen.module_common.base.BaseActivity
 import com.tommy.shen.module_common.constant.Web
-import com.tommy.shen.module_web.R
+import com.tommy.shen.module_main.R
+import com.tommy.shen.module_main.databinding.ActWebBinding
 import com.tommy.shen.module_web.client.BaseWebClient
 import com.tommy.shen.module_web.client.JianShuWebClient
 import com.tommy.shen.module_web.client.JianShuWebClient.Companion.JIAN_SHU
-import com.tommy.shen.module_web.databinding.ActWebBinding
 
 @Route(path = Web.WEB_PAGE)
 class WebActivity : BaseActivity<ActWebBinding>() {

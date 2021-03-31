@@ -2,8 +2,6 @@ package com.tommy.shen.wanandroidkt.ui
 
 import com.tommy.shen.module_common.app.ApplicationImpl
 import com.tommy.shen.module_common.app.BaseApplication
-import com.tommy.shen.module_common.app.MODULES_LIST
-
 
 class MainApplication:BaseApplication(){
 

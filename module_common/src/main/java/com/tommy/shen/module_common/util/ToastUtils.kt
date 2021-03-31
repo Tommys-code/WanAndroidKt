@@ -19,6 +19,10 @@ class ToastUtils {
             this.showToast(BaseApplication.instance, text, duration)
         }
 
+        fun showToast(text: Int, duration: Int = Toast.LENGTH_SHORT) {
+            this.showToast(BaseApplication.instance, text, duration)
+        }
+
         fun showToast(
             context: Context?, text: CharSequence,
             duration: Int = Toast.LENGTH_SHORT

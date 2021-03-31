@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit
 
 object NetWork {
 
-    private const val BASE_URL = "https://www.wanandroid.com"
+    const val BASE_URL = "https://www.wanandroid.com"
 
     //retrofit对象
     private var retrofit: Retrofit? = null

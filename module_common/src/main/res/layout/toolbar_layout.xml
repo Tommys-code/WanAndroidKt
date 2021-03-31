@@ -1,30 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <FrameLayout
-        android:background="@color/colorPrimaryDark"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/toolbar_height">
+        android:layout_height="@dimen/toolbar_height"
+        android:background="@color/colorPrimaryDark">
 
         <ImageView
             android:id="@+id/back"
-            android:paddingLeft="@dimen/dp14"
-            android:src="@drawable/ic_back"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/dp14"
+            android:src="@drawable/ic_back" />
 
         <TextView
-            android:maxLines="1"
+            android:id="@+id/title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:ellipsize="end"
             android:maxWidth="220dp"
-            android:id="@+id/title_tv"
+            android:maxLines="1"
             android:textColor="@android:color/white"
-            android:layout_gravity="center"
             android:textSize="@dimen/sp20"
-            tools:text="11111111"
+            tools:text="11111111" />
+
+        <ImageView
+            android:id="@+id/ic_right"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="@dimen/dp14"
+            android:visibility="gone" />
 
     </FrameLayout>
 

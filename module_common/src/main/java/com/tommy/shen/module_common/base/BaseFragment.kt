@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
@@ -34,6 +36,22 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
         apply {
             back.visibility = View.GONE
             titleTv.text = title
+        }
+    }
+
+    protected fun ToolbarLayoutBinding.init(
+        @StringRes title: Int,
+        @DrawableRes icon: Int = 0,
+        rightClick: (() -> Unit)? = null
+    ) {
+        apply {
+            back.visibility = View.GONE
+            titleTv.text = getString(title)
+            if (icon != 0) {
+                icRight.visibility = View.VISIBLE
+                icRight.setImageResource(icon)
+                icRight.setOnClickListener { rightClick?.invoke() }
+            }
         }
     }
 }

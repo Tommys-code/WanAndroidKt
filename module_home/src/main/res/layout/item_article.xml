@@ -9,42 +9,90 @@
             name="data"
             type="com.tommy.shen.module_home.data.ArticleData" />
 
+        <import type="android.text.TextUtils" />
+
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="9dp"
-        android:layout_marginVertical="4dp"
-        app:cardCornerRadius="3dp"
+        android:layout_marginVertical="5dp"
+        app:cardCornerRadius="10dp"
         app:cardElevation="3dp"
-        app:contentPaddingBottom="4dp"
-        app:contentPaddingLeft="5dp"
-        app:contentPaddingRight="5dp"
-        app:contentPaddingTop="4dp">
+        app:contentPadding="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/new_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/home_tag_bg"
+                android:paddingHorizontal="2dp"
+                android:text="@string/home_new"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/sp12"
+                app:layout_constraintBottom_toBottomOf="@id/auth"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/auth"
+                app:visibleGone="@{data.isNew()}" />
+
+            <TextView
+                android:id="@+id/auth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="@{TextUtils.isEmpty(data.author)?@string/home_share_user(data.shareUser):@string/home_author(data.author)}"
+                android:textColor="#666"
+                android:textSize="@dimen/sp14"
+                app:layout_constraintStart_toEndOf="@id/new_tag"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_goneMarginStart="0dp"
+                tools:text="作者：1111" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="@{data.niceDate}"
+                android:textColor="#666"
+                android:textSize="@dimen/sp12"
+                app:layout_constraintBottom_toBottomOf="@id/auth"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/auth" />
+
+            <TextView
                 android:id="@+id/title_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:text="@{data.title}"
                 android:textColor="#333"
                 android:textSize="@dimen/sp16"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/auth"
                 tools:text="title" />
 
             <TextView
-                android:layout_marginTop="10dp"
-                tools:text="作者：1111"
-                android:textSize="@dimen/sp12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text='@{data.superChapterName+"-"+ data.chapterName}'
+                android:textSize="@dimen/sp12"
+                app:layout_constraintBottom_toBottomOf="@id/collect_tv"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/collect_tv" />
+
+            <TextView
+                android:id="@+id/collect_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/home_start_bg"
+                app:isSelected="@{data.collect}"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title_tv" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
