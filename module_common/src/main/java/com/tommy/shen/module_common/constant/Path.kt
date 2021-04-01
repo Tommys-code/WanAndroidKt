@@ -16,6 +16,13 @@ object Home {
 
 }
 
+object Project{
+
+    private const val PROJECT = "/module_project"
+    const val PROJECT_PAGE = "$PROJECT/project"
+    const val PROJECT_LIST_PAGE = "$PROJECT/project_list"
+}
+
 object Web {
 
     private const val WEB = "/module_web"

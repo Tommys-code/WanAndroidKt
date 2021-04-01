@@ -58,5 +58,6 @@ dependencies {
     if (!isModule.toBoolean()) {
         implementation project(path: ':module_home')
         implementation project(path: ':module_web')
+        implementation project(path: ':module_project')
     }
 }

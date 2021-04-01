@@ -12,9 +12,11 @@
             layout="@layout/toolbar_layout" />
 
         <com.google.android.material.tabs.TabLayout
+            android:elevation="4dp"
             android:id="@+id/tab_lay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:tabMode="scrollable"
             app:tabIndicatorColor="@color/colorPrimary"
             app:tabSelectedTextColor="@color/colorPrimary"
             app:tabTextColor="#333" />
