@@ -1,6 +1,6 @@
+include ':module_project'
 include ':module_web'
 include ':module_home'
-include ':module_main'
 include ':module_common'
 include ':app'
 rootProject.name = "WanAndroidKt"
