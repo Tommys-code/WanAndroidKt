@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isSelected"
+            type="boolean" />
+
+        <variable
+            name="data"
+            type="com.tommy.shen.module_public.data.WxArticleData" />
+
+    </data>
+
+    <TextView
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/chapter_bg"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="8dp"
+        android:text="@{data.name}"
+        android:textColor="@drawable/chapter_text_color"
+        android:textSize="@dimen/sp14"
+        app:isSelected="@{isSelected}"
+        tools:text="1111111" />
+
+</layout>

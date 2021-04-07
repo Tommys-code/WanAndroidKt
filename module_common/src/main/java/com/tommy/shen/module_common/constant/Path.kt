@@ -23,6 +23,13 @@ object Project{
     const val PROJECT_LIST_PAGE = "$PROJECT/project_list"
 }
 
+object Public{
+
+    private const val PUBLIC = "/module_public"
+    const val PUBLIC_PAGE = "$PUBLIC/public"
+
+}
+
 object Web {
 
     private const val WEB = "/module_web"

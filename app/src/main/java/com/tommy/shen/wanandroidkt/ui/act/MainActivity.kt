@@ -19,12 +19,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding.viewPager.adapter = mainAdapter
         binding.bottomNav.setOnNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.homeFragment -> binding.viewPager.currentItem = 0
-                R.id.projectFragment -> binding.viewPager.currentItem = 1
-                R.id.squareFragment -> binding.viewPager.currentItem = 2
-                R.id.myFragment -> binding.viewPager.currentItem = 3
+                R.id.homeFragment -> changeTab(0)
+                R.id.projectFragment -> changeTab(1)
+                R.id.squareFragment -> changeTab(2)
+                R.id.myFragment -> changeTab(3)
             }
             true
         }
+    }
+
+    private fun changeTab(item: Int) {
+        binding.viewPager.setCurrentItem(item, false)
     }
 }

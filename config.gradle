@@ -9,7 +9,7 @@ ext {
     ]
     //version配置
     versions = [
-            "paging_version": "3.0.0-alpha12",
+            "paging_version": "3.0.0-beta03",
             "room_version"  : "2.2.5"
     ]
     //androidx配置
@@ -21,7 +21,7 @@ ext {
             "constraintlayout"   : "androidx.constraintlayout:constraintlayout:2.0.1",
             "material"           : "com.google.android.material:material:1.2.1",
             "swiperefreshlayout" : "androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01",
-            "paging"             : "androidx.paging:paging-runtime:${versions["paging_version"]}",
+            "paging"             : "androidx.paging:paging-runtime-ktx:${versions["paging_version"]}",
             "room"               : "androidx.room:room-runtime:${versions["room_version"]}",
             "room-compiler"      : "androidx.room:room-compiler:${versions["room_version"]}",
             "room-ktx"           : "androidx.room:room-ktx:${versions["room_version"]}",

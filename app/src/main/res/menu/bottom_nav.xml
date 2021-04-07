@@ -10,7 +10,7 @@
         android:title="@string/project_menu" />
     <item
         android:id="@+id/squareFragment"
-        android:icon="@drawable/ic_square"
+        android:icon="@drawable/ic_message"
         android:title="@string/square_menu" />
     <item
         android:id="@+id/myFragment"

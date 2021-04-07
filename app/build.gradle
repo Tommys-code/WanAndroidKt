@@ -59,5 +59,6 @@ dependencies {
         implementation project(path: ':module_home')
         implementation project(path: ':module_web')
         implementation project(path: ':module_project')
+        implementation project(path: ':module_public')
     }
 }

@@ -82,8 +82,8 @@ class WebActivity : BaseActivity<ActWebBinding>() {
     }
 
     private fun initWebClient() {
-        webView.webViewClient =
-            if (url.startsWith(JIAN_SHU)) JianShuWebClient() else BaseWebClient()
+        webView.webViewClient = BaseWebClient()
+//            if (url.startsWith(JIAN_SHU)) JianShuWebClient() else BaseWebClient()
         webView.webChromeClient = BaseWebChromeClient()
     }
 

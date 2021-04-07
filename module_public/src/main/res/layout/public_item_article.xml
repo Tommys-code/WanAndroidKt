@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="com.tommy.shen.module_home.data.ArticleData" />
+            type="com.tommy.shen.module_public.data.ArticleData" />
 
         <import type="android.text.TextUtils" />
 
@@ -27,28 +27,13 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/new_tag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/home_tag_bg"
-                android:paddingHorizontal="2dp"
-                android:text="@string/home_new"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/sp12"
-                app:layout_constraintBottom_toBottomOf="@id/auth"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/auth"
-                app:visibleGone="@{data.isNew()}" />
-
-            <TextView
                 android:id="@+id/auth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:text="@{TextUtils.isEmpty(data.author)?@string/home_share_user(data.shareUser):@string/home_author(data.author)}"
+                android:text="@{data.author}"
                 android:textColor="#666"
                 android:textSize="@dimen/sp14"
-                app:layout_constraintStart_toEndOf="@id/new_tag"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_goneMarginStart="0dp"
                 tools:text="作者：1111" />
