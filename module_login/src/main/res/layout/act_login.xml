@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isRegister"
+            type="boolean" />
+
+        <variable
+            name="onClick"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_layout"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_line_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="25dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_line_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="25dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="@{isRegister?@string/register:@string/login}"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="43sp"
+            app:layout_constraintEnd_toStartOf="@id/guide_line_end"
+            app:layout_constraintStart_toEndOf="@id/guide_line_start"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+        <com.tommy.shen.module_common.widgets.ClearEditText
+            android:id="@+id/account_et"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/login_edit_bg"
+            android:drawableRight="@drawable/ic_login_clear"
+            android:drawableTint="@color/colorPrimary"
+            android:gravity="center_vertical"
+            android:hint="@string/login_account_hint"
+            android:maxLength="20"
+            android:paddingHorizontal="12dp"
+            android:singleLine="true"
+            android:textColor="#192651"
+            android:textColorHint="#BAB7B7"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintBottom_toTopOf="@id/password_et"
+            app:layout_constraintEnd_toStartOf="@id/guide_line_end"
+            app:layout_constraintStart_toEndOf="@id/guide_line_start"
+            app:layout_constraintTop_toTopOf="@+id/toolbar"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <com.tommy.shen.module_common.widgets.ClearEditText
+            android:id="@+id/password_et"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/login_edit_bg"
+            android:drawableRight="@drawable/ic_login_clear"
+            android:drawableTint="@color/colorPrimary"
+            android:gravity="center_vertical"
+            android:hint="@string/login_password_hint"
+            android:inputType="textPassword"
+            android:maxLength="30"
+            android:paddingHorizontal="12dp"
+            android:singleLine="true"
+            android:textColor="#192651"
+            android:textColorHint="#BAB7B7"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintBottom_toTopOf="@id/password_confirm_et"
+            app:layout_constraintEnd_toStartOf="@id/guide_line_end"
+            app:layout_constraintStart_toEndOf="@id/guide_line_start"
+            app:layout_constraintTop_toBottomOf="@+id/account_et" />
+
+        <com.tommy.shen.module_common.widgets.ClearEditText
+            android:id="@+id/password_confirm_et"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/login_edit_bg"
+            android:drawableRight="@drawable/ic_login_clear"
+            android:drawableTint="@color/colorPrimary"
+            android:gravity="center_vertical"
+            android:hint="@string/login_password_confirm_hint"
+            android:inputType="textPassword"
+            android:maxLength="30"
+            android:paddingHorizontal="12dp"
+            android:singleLine="true"
+            android:textColor="#192651"
+            android:textColorHint="#BAB7B7"
+            android:textSize="@dimen/sp16"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/login"
+            app:layout_constraintEnd_toStartOf="@id/guide_line_end"
+            app:layout_constraintStart_toEndOf="@id/guide_line_start"
+            app:layout_constraintTop_toBottomOf="@+id/password_et"
+            app:visibleGone="@{isRegister}" />
+
+        <TextView
+            android:onClick="@{onClick}"
+            android:id="@+id/login"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/login_btn_bg"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="@{isRegister?@string/register:@string/login}"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/guide_line_end"
+            app:layout_constraintStart_toEndOf="@id/guide_line_start"
+            app:layout_constraintTop_toBottomOf="@id/password_confirm_et" />
+
+        <TextView
+            android:onClick="@{onClick}"
+            android:id="@+id/login_or_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingVertical="12dp"
+            android:text="@{isRegister?@string/direct_login:@string/register_account}"
+            app:layout_constraintEnd_toStartOf="@id/guide_line_end"
+            app:layout_constraintTop_toBottomOf="@id/login"
+            tools:text="zhuceee" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,7 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tommy.shen.module_login">
+
+    <application>
+        <activity android:name=".act.LoginActivity" />
+    </application>
+</manifest>

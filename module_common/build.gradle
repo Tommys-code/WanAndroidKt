@@ -62,5 +62,6 @@ dependencies {
     api rootProject.ext.dependencies["logging-interceptor"]
     api rootProject.ext.dependencies["arouter_api"]
     api rootProject.ext.dependencies["flexbox"]
+    api rootProject.ext.dependencies["mmkv"]
 
 }

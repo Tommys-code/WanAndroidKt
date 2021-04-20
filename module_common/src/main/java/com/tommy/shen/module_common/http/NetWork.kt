@@ -2,6 +2,7 @@ package com.tommy.shen.module_common.http
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import com.tommy.shen.module_common.http.cookie.SaveCookieInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -39,6 +40,7 @@ object NetWork {
             .connectTimeout(10, TimeUnit.SECONDS)//设置连接超时
             .readTimeout(10, TimeUnit.SECONDS)//读取超时
             .writeTimeout(10, TimeUnit.SECONDS)//写入超时
+            .addInterceptor(SaveCookieInterceptor())
             .addInterceptor(interceptor)
             .build()
     }

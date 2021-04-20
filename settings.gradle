@@ -1,3 +1,5 @@
+include ':module_login'
+include ':module_my'
 include ':module_public'
 include ':module_project'
 include ':module_web'
