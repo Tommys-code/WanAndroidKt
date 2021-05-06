@@ -40,13 +40,13 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
     }
 
     protected fun ToolbarLayoutBinding.init(
-        @StringRes title: Int,
+        @StringRes title: Int = -1,
         @DrawableRes icon: Int = 0,
         rightClick: (() -> Unit)? = null
     ) {
         apply {
             back.visibility = View.GONE
-            titleTv.text = getString(title)
+            if(title != -1) titleTv.text = getString(title)
             if (icon != 0) {
                 icRight.visibility = View.VISIBLE
                 icRight.setImageResource(icon)
