@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">我的</string>
+    <string name="my_not_login">未登录</string>
+    <string name="my_score">我的积分</string>
+    <string name="my_current_score">当前积分：%1$d</string>
 </resources>

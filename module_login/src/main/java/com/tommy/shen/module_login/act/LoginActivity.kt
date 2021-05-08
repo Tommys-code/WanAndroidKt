@@ -7,12 +7,10 @@ import androidx.lifecycle.Observer
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
+import com.jeremyliao.liveeventbus.LiveEventBus
 import com.tencent.mmkv.MMKV
 import com.tommy.shen.module_common.base.BaseActivity
-import com.tommy.shen.module_common.constant.Login
-import com.tommy.shen.module_common.constant.USER
-import com.tommy.shen.module_common.constant.USER_ID
-import com.tommy.shen.module_common.constant.USER_NAME
+import com.tommy.shen.module_common.constant.*
 import com.tommy.shen.module_common.util.DialogUtil
 import com.tommy.shen.module_common.util.ToastUtils
 import com.tommy.shen.module_login.R
@@ -44,6 +42,7 @@ class LoginActivity : BaseActivity<ActLoginBinding>(), View.OnClickListener {
         viewModel.registerAndLoginLiveData.observe(this, Observer {
             userKv?.encode(USER_ID, it.id)
             userKv?.encode(USER_NAME, it.nickname)
+            LiveEventBus.get<Boolean>(LOGIN).post(true)
             finish()
         })
         viewModel.isShowLoading.observe(this, Observer {

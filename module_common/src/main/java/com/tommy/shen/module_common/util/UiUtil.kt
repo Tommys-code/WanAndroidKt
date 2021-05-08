@@ -1,14 +1,13 @@
 package com.tommy.shen.module_common.util
 
-import android.app.Activity
-import android.content.Context
-import android.widget.EditText
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.alibaba.android.arouter.launcher.ARouter
+import com.tencent.mmkv.MMKV
 import com.tommy.shen.module_common.R
+import com.tommy.shen.module_common.constant.USER
+import com.tommy.shen.module_common.constant.USER_ID
 import com.tommy.shen.module_common.constant.Web
 import com.tommy.shen.module_common.http.NetWork
-import com.tommy.shen.module_common.widgets.ProgressDialog
 
 fun openWeb(url: String, title: String = "", id: Int = -1) {
     ARouter.getInstance().build(Web.WEB_PAGE)
@@ -23,3 +22,10 @@ fun SwipeRefreshLayout.init(refreshListener: (() -> Unit)?) {
     setOnRefreshListener { refreshListener?.invoke() }
 }
 
+fun isLogin(): Boolean {
+    return MMKV.mmkvWithID(USER)?.decodeInt(USER_ID, -1) ?: -1 > 0
+}
+
+fun isLogin(id: Int?): Boolean {
+    return id ?: -1 > 0
+}

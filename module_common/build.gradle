@@ -14,6 +14,12 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
     }
 
     buildTypes {
@@ -63,5 +69,8 @@ dependencies {
     api rootProject.ext.dependencies["arouter_api"]
     api rootProject.ext.dependencies["flexbox"]
     api rootProject.ext.dependencies["mmkv"]
+    api rootProject.ext.dependencies["live_event_bus"]
+
+    kapt  rootProject.ext.dependencies["arouter_compiler"]
 
 }

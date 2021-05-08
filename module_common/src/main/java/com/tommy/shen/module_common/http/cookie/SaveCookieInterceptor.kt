@@ -13,9 +13,10 @@ class SaveCookieInterceptor : Interceptor {
         const val SET_COOKIE_KEY = "set-cookie"
 
         const val COOKIES_PATH = "cookies_path"
+        const val COOKIE_NAME = "Cookie"
     }
 
-    private val cookie by lazy { MMKV.mmkvWithID(COOKIES_PATH) }
+    private val cookieMMkv by lazy { MMKV.mmkvWithID(COOKIES_PATH) }
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
@@ -27,36 +28,25 @@ class SaveCookieInterceptor : Interceptor {
             && response.headers(SET_COOKIE_KEY).isNotEmpty()
         ) {
             val cookies = response.headers(SET_COOKIE_KEY)
-            val cookie = encodeCookie(cookies)
-            saveCookie(requestUrl, domain, cookie)
+            saveCookie(domain, parseCookie(cookies))
         }
         return response
     }
 
-    private fun encodeCookie(cookies: List<String>): String {
-        val sb = StringBuilder()
-        val set = HashSet<String>()
-        cookies.map { cookie ->
-            cookie.split(";".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()
-        }.forEach {
-            it.filterNot { filter -> set.contains(filter) }.forEach { each -> set.add(each) }
+    private fun parseCookie(it: List<String>): String {
+        if(it.isEmpty()) return ""
+        val stringBuilder = StringBuilder()
+        it.forEach { cookie ->
+            stringBuilder.append(cookie).append(";")
         }
-        val ite = set.iterator()
-        while (ite.hasNext()) {
-            val cookie = ite.next()
-            sb.append(cookie).append(";")
+        if(stringBuilder.isEmpty()){
+            return ""
         }
-        val last = sb.lastIndexOf(";")
-        if (sb.length - 1 == last) {
-            sb.deleteCharAt(last)
-        }
-        return sb.toString()
+        //末尾的";"去掉
+        return stringBuilder.deleteCharAt(stringBuilder.length - 1).toString()
     }
 
-    private fun saveCookie(url: String?, domain: String?, cookies: String) {
-        url ?: return
-        cookie?.encode(url, cookies)
-        domain ?: return
-        cookie?.encode(domain, cookies)
+    private fun saveCookie(domain: String, cookies: String) {
+        cookieMMkv?.encode(domain, cookies)
     }
 }

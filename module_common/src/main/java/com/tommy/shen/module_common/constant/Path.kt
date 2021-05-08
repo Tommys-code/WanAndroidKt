@@ -2,6 +2,8 @@ package com.tommy.shen.module_common.constant
 
 import com.alibaba.android.arouter.launcher.ARouter
 
+const val NEED_LOGIN = 2001
+
 object Main {
 
     private const val MAIN = "/module_main"
@@ -35,6 +37,8 @@ object Public {
 object Mine {
     private const val MINE = "/module_mine"
     const val MINE_PAGE = "$MINE/mine"
+
+    const val MY_SCORE = "$MINE/my_score"
 }
 
 object Login {
