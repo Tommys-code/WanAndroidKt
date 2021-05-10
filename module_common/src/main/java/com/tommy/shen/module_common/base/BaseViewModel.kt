@@ -4,6 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tommy.shen.module_common.util.ToastUtils
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 abstract class BaseViewModel<T : BaseRepository> : ViewModel() {
@@ -24,6 +26,32 @@ abstract class BaseViewModel<T : BaseRepository> : ViewModel() {
         viewModelScope.launch {
             try {
                 postValue(request.invoke())
+            } catch (e: Exception) {
+                when (e) {
+                    is BaseRepository.MyException -> {
+                        if (isShowError) ToastUtils.showToast(e.msg)
+                        onError?.invoke(e.errorCode)
+                    }
+                }
+            } finally {
+                dismissLoading()
+                onFinally?.invoke()
+            }
+        }
+        return this
+    }
+
+    protected fun <DATA> MutableLiveData<DATA>.launchWithCache(
+        isShowLoading: Boolean = false,
+        isShowError: Boolean = true,
+        onError: ((code: Int) -> Unit)? = null,
+        onFinally: (() -> Unit)? = null,
+        request: suspend () -> Flow<DATA>
+    ): MutableLiveData<DATA> {
+        if (isShowLoading) showLoading()
+        viewModelScope.launch {
+            try {
+                request.invoke().collect { postValue(it) }
             } catch (e: Exception) {
                 when (e) {
                     is BaseRepository.MyException -> {

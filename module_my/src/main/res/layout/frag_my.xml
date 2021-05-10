@@ -87,12 +87,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawablePadding="10dp"
+            android:gravity="center_vertical"
             android:paddingHorizontal="12dp"
             android:text="@{coin>=0?@string/my_current_score(coin):null}"
             app:drawableEndCompat="@drawable/ic_right"
             app:layout_constraintBottom_toBottomOf="@id/my_score"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/my_score" />
+            app:layout_constraintTop_toTopOf="@id/my_score"
+            tools:text="1111111" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
