@@ -1,4 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.tommy.shen.module_my.data.CoinListData" />
+
+    </data>
+
+    <RelativeLayout
+        android:paddingHorizontal="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="@dimen/sp16"
+            android:layout_marginTop="10dp"
+            android:id="@+id/reason"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{data.reason}"
+            tools:text="签到" />
+
+        <TextView
+            tools:text="111111"
+            android:id="@+id/date"
+            android:textSize="@dimen/sp14"
+            android:layout_marginTop="4dp"
+            android:layout_below="@id/reason"
+            android:text="@{data.getDate()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            tools:text="111111"
+            android:text="@{String.valueOf(data.coinCount)}"
+            android:textSize="@dimen/sp16"
+            android:textColor="@color/colorPrimary"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <View
+            android:layout_marginTop="10dp"
+            android:background="#DDDDDD"
+            android:layout_below="@id/date"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+    </RelativeLayout>
 
 </layout>

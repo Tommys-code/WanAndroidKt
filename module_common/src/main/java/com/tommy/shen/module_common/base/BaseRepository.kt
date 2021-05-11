@@ -7,6 +7,7 @@ import com.squareup.moshi.adapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.tommy.shen.module_common.app.BaseApplication
 import com.tommy.shen.module_common.data.BaseResult
+import com.tommy.shen.module_common.http.NetWork
 import com.tommy.shen.module_common.util.LoginRouterInterceptor
 import com.tommy.shen.module_common.util.ToastUtils
 import kotlinx.coroutines.Dispatchers
@@ -75,16 +76,16 @@ open class BaseRepository {
     }
 
     suspend inline fun <reified T> saveData(key: String, value: T) {
-        val data = Moshi.Builder().add(KotlinJsonAdapterFactory()).build().adapter(T::class.java)
+        val data = NetWork.getMoShi().adapter(T::class.java)
             .toJson(value)
         db.myDao().save(key, data)
     }
 
     suspend inline fun <reified T> getData(key: String): T? {
         return db.myDao().get(key)?.let {
-                Moshi.Builder().add(KotlinJsonAdapterFactory()).build().adapter(T::class.java)
-                    .fromJson(it.data_value)
-            }
+            NetWork.getMoShi().adapter(T::class.java)
+                .fromJson(it.data_value)
+        }
     }
 
     class MyException(val errorCode: Int, val msg: String) : Exception(msg)

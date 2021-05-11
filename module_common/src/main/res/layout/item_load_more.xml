@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="loadState"
+            type="int" />
+
+        <import type="androidx.paging.LoadState" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/list_no_data"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"
+            app:visibleGone="@{loadState == 3}"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/paging_btn_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            android:layout_centerHorizontal="true"
+            android:text="@string/retry"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp14"
+            android:visibility="gone"
+            android:background="@drawable/retry_btn_bg"
+            app:visibleGone="@{loadState == 2}"
+            tools:visibility="visible" />
+
+    </RelativeLayout>
+
+</layout>

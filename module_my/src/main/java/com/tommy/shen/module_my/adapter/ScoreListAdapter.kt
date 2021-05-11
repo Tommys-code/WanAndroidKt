@@ -16,10 +16,13 @@ class ScoreListAdapter :BasePagingRecycleAdapter<CoinListData,ItemCoinListBindin
     override fun getChangePayload(oldItem: CoinListData, newItem: CoinListData) = Any()
 
 }){
+
     override fun getLayoutId(viewType: Int): Int = R.layout.item_coin_list
 
     override fun onBindViewHolderCompat(binding: ItemCoinListBinding, position: Int) {
-        TODO("Not yet implemented")
+        getItem(position)?.run {
+            binding.data = this
+        }
     }
 
 }

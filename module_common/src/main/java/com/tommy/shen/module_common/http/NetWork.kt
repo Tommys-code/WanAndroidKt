@@ -30,7 +30,7 @@ object NetWork {
         return retrofit!!
     }
 
-    private fun getMoShi() = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+    fun getMoShi() = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 
     private fun getHttpClient(): OkHttpClient {
         //日志拦截器

@@ -1,10 +1,12 @@
 package com.tommy.shen.module_common.base
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.DiffUtil
 
 abstract class BasePagingRecycleAdapter<T : Any, VD : ViewDataBinding>(
@@ -14,6 +16,8 @@ abstract class BasePagingRecycleAdapter<T : Any, VD : ViewDataBinding>(
         override fun getChangePayload(oldItem: T, newItem: T) = Any()
     }
 ) : PagingDataAdapter<T, RecyclerCompatVH<VD>>(itemCallback) {
+
+    fun addFooter(): ConcatAdapter = withLoadStateFooter(LoadMoreAdapter { retry() })
 
     protected abstract fun getLayoutId(viewType: Int): Int
 
