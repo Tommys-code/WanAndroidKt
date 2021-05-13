@@ -17,6 +17,9 @@ import kotlinx.coroutines.withContext
 
 class CoinViewModel : BasePagingViewModel<MineRepository, CoinListData>() {
 
+    override val pageIndex: Int
+        get() = 1
+
     val coinLiveData = MutableLiveData<CoinData>()
 
     override fun getRepository() = MineRepository()

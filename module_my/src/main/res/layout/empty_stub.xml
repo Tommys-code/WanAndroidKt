@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="type"
+            type="int" />
+
+    </data>
+
+    <merge
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_gravity="center"
+            app:visibleGone="@{type == 1}"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp18"
+            android:drawablePadding="8dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="@string/my_list_empty"
+            tools:drawableTop="@drawable/icon_empty"
+            app:drawableTopCompat="@drawable/icon_empty" />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/error"
+            android:layout_gravity="center"
+            app:visibleGone="@{type == 2}"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp18"
+            android:drawablePadding="8dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="@string/my_net_error"
+            tools:drawableTop="@drawable/icon_net_error"
+            app:drawableTopCompat="@drawable/icon_net_error" />
+
+    </merge>
+
+</layout>

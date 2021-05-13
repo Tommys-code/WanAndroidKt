@@ -10,4 +10,6 @@ class MineRepository : BaseRepository() {
 
     suspend fun getCoinList(pageNum: Int) = request { api.getCoinList(pageNum) }
 
+    suspend fun getCollectList(pageNum: Int) = request { api.getCollectList(pageNum) }
+
 }

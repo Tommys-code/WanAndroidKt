@@ -7,11 +7,7 @@
 
         <variable
             name="data"
-            type="com.tommy.shen.module_public.data.ArticleData" />
-
-        <variable
-            name="collect"
-            type="boolean" />
+            type="com.tommy.shen.module_my.data.ArticleData" />
 
         <import type="android.text.TextUtils" />
 
@@ -29,11 +25,11 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <TextView
                 android:id="@+id/auth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:text="@{data.author}"
                 android:textColor="#666"
                 android:textSize="@dimen/sp14"
@@ -69,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text='@{data.superChapterName+"-"+ data.chapterName}'
+                android:text='@{data.chapterName}'
                 android:textSize="@dimen/sp12"
                 app:layout_constraintBottom_toBottomOf="@id/collect_tv"
                 app:layout_constraintStart_toStartOf="parent"
@@ -80,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/star_bg"
-                app:isSelected="@{collect}"
+                app:isSelected="@{true}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title_tv" />
 

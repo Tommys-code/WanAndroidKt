@@ -39,6 +39,7 @@ object Mine {
     const val MINE_PAGE = "$MINE/mine"
 
     const val MY_SCORE = "$MINE/my_score"
+    const val MY_COLLECT = "$MINE/my_collect"
 }
 
 object Login {

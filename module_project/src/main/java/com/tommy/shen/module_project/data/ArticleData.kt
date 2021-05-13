@@ -12,5 +12,5 @@ data class ArticleData(
     val chapterName: String,
     val envelopePic: String,
     val desc: String,
-    val collect: Boolean
+    var collect: Boolean
 )

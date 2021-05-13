@@ -12,4 +12,7 @@ class PublicRepository : BaseRepository() {
     suspend fun getArticleById(id: Int, pageSize: Int) =
         request { api.getArticleById(id, pageSize) }
 
+    suspend fun collectArticle(id: Int) = request { api.collect(id) }
+
+    suspend fun unCollectArticle(id: Int) = request { api.unCollectArticle(id) }
 }

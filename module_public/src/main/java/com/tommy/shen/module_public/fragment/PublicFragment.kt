@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.tommy.shen.module_common.base.BaseFragment
 import com.tommy.shen.module_common.constant.Public
+import com.tommy.shen.module_common.util.ToastUtils
 import com.tommy.shen.module_common.util.init
 import com.tommy.shen.module_public.R
 import com.tommy.shen.module_public.adapter.PublicArticleAdapter
@@ -61,6 +62,16 @@ class PublicFragment : BaseFragment<FragPublicBinding>() {
         binding.name.setOnClickListener {
             dialog.show()
         }
+        adapter.setOnCollectedListener { collect, id, position ->
+            viewModel.collectArticle(id, collect, position)
+        }
+        viewModel.collectLiveData.observe(this, Observer {
+            val isCollect = adapter.setItemCollected(it)
+            ToastUtils.showSnackBar(
+                binding.root,
+                if (isCollect) R.string.home_collect_success else R.string.home_un_collect_success
+            )
+        })
     }
 
 }

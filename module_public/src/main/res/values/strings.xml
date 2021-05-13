@@ -2,4 +2,6 @@
 <resources>
     <string name="app_name">公众号</string>
     <string name="public_title">公众号</string>
+    <string name="home_collect_success">收藏成功</string>
+    <string name="home_un_collect_success">取消收藏成功</string>
 </resources>

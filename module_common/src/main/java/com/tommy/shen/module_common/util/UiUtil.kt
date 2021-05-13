@@ -29,3 +29,4 @@ fun isLogin(): Boolean {
 fun isLogin(id: Int?): Boolean {
     return id ?: -1 > 0
 }
+

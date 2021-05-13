@@ -11,6 +11,7 @@ import com.tommy.shen.module_home.repository.HomeRepository
 class HomeViewModel : BasePagingViewModel<HomeRepository, ArticleData>() {
 
     private val bannerLiveData = MutableLiveData<List<BannerData>>()
+    val collectLiveData = MutableLiveData<Int>()
 
     override fun getRepository() = HomeRepository()
 
@@ -18,8 +19,19 @@ class HomeViewModel : BasePagingViewModel<HomeRepository, ArticleData>() {
         return bannerLiveData.launch { repo.getBannerInfo() }
     }
 
-    override suspend fun getData(pageSize: Int): BaseListData<ArticleData>? {
-        return repo.getArticleList(pageSize)
+    override suspend fun getData(pageNum: Int): BaseListData<ArticleData>? {
+        return repo.getArticleList(pageNum)
     }
+
+    fun collectArticle(id: Int, collect: Boolean, position: Int) =
+        collectLiveData.launch {
+            if (collect) {
+                repo.unCollectArticle(id)
+                position
+            } else {
+                repo.collectArticle(id)
+                position
+            }
+        }
 
 }

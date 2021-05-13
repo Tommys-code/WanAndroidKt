@@ -20,7 +20,7 @@ abstract class BaseViewModel<T : BaseRepository> : ViewModel() {
         isShowError: Boolean = true,
         onError: ((code: Int) -> Unit)? = null,
         onFinally: (() -> Unit)? = null,
-        request: suspend () -> DATA
+        request: suspend () -> DATA?
     ): MutableLiveData<DATA> {
         if (isShowLoading) showLoading()
         viewModelScope.launch {

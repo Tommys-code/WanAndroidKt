@@ -44,6 +44,7 @@ class MyFragment : BaseFragment<FragMyBinding>(), View.OnClickListener {
             R.id.imageView3, R.id.name_tv ->
                 if (!isLogin(userKv?.decodeInt(USER_ID, -1))) Login.openLogin()
             R.id.my_score -> ARouter.getInstance().build(Mine.MY_SCORE).navigation()
+            R.id.my_collect -> ARouter.getInstance().build(Mine.MY_COLLECT).navigation()
         }
     }
 }

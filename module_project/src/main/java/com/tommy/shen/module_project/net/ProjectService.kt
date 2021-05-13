@@ -6,6 +6,7 @@ import com.tommy.shen.module_common.http.NetWork
 import com.tommy.shen.module_project.data.ArticleData
 import com.tommy.shen.module_project.data.ProjectTreeData
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -29,5 +30,11 @@ interface ProjectService {
         @Path("pageNum") pageNum: Int,
         @Query("cid") id: Int
     ): BaseResult<BaseListData<ArticleData>>
+
+    @POST("lg/collect/{id}/json")
+    suspend fun collect(@Path("id") id: Int): BaseResult<Any?>
+
+    @POST("lg/uncollect_originId/{id}/json")
+    suspend fun unCollectArticle(@Path("id") id: Int): BaseResult<Any?>
 
 }

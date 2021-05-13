@@ -10,7 +10,7 @@ data class ArticleData(
     val link: String,
     val superChapterName: String,
     val chapterName: String,
-    val collect: Boolean
+    var collect: Boolean
 ) {
 
     fun isNew() = publishTime >= System.currentTimeMillis() - 24 * 60 * 60 * 1000

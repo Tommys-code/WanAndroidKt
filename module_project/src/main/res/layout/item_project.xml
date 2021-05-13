@@ -9,6 +9,10 @@
             name="data"
             type="com.tommy.shen.module_project.data.ArticleData" />
 
+        <variable
+            name="collect"
+            type="boolean" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,10 +26,10 @@
             android:layout_width="80dp"
             android:layout_height="100dp"
             android:scaleType="centerCrop"
-            app:roundCornerCropImageUrl="@{data.envelopePic}"
-            app:roundRadius="@{@dimen/dp4}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:roundCornerCropImageUrl="@{data.envelopePic}"
+            app:roundRadius="@{@dimen/dp4}"
             tools:src="@color/colorPrimary" />
 
         <TextView
@@ -61,6 +65,7 @@
             tools:text="1111111111111" />
 
         <TextView
+            android:id="@+id/author_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -79,6 +84,15 @@
             android:layout_marginTop="10dp"
             android:background="#E1E1E1"
             app:layout_constraintTop_toBottomOf="@id/img" />
+
+        <TextView
+            android:id="@+id/collect_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/star_bg"
+            app:isSelected="@{collect}"
+            app:layout_constraintBottom_toBottomOf="@id/author_tv"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

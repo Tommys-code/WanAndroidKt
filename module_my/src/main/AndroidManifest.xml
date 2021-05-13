@@ -3,5 +3,6 @@
 
     <application>
         <activity android:name=".act.MyScoreAct" />
+        <activity android:name=".act.MyCollectAct" />
     </application>
 </manifest>

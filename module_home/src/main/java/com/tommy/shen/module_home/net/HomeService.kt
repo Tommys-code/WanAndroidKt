@@ -38,4 +38,10 @@ interface HomeService {
         @Path("pageNum") pageNum: Int,
         @Query("k") k: String
     ): BaseResult<BaseListData<ArticleData>>
+
+    @POST("lg/collect/{id}/json")
+    suspend fun collect(@Path("id") id: Int): BaseResult<Any?>
+
+    @POST("lg/uncollect_originId/{id}/json")
+    suspend fun unCollectArticle(@Path("id") id: Int): BaseResult<Any?>
 }

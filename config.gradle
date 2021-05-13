@@ -9,7 +9,7 @@ ext {
     ]
     //version配置
     versions = [
-            "paging_version": "3.0.0-beta03",
+            "paging_version": "3.0.0-rc01",
             "room_version"  : "2.2.5"
     ]
     //androidx配置

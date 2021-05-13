@@ -8,4 +8,6 @@
     <string name="home_search_hint">输入关键字</string>
     <string name="home_search_empty">请输入关键字</string>
     <string name="home_cancel">取消</string>
+    <string name="home_collect_success">收藏成功</string>
+    <string name="home_un_collect_success">取消收藏成功</string>
 </resources>

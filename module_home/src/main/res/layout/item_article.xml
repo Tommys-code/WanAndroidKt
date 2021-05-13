@@ -9,6 +9,10 @@
             name="data"
             type="com.tommy.shen.module_home.data.ArticleData" />
 
+        <variable
+            name="collect"
+            type="boolean" />
+
         <import type="android.text.TextUtils" />
 
     </data>
@@ -91,7 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/star_bg"
-                app:isSelected="@{data.collect}"
+                app:isSelected="@{collect}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title_tv" />
 

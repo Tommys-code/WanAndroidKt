@@ -11,6 +11,7 @@ import com.tommy.shen.module_public.repo.PublicRepository
 class PublicViewModel : BasePagingViewModel<PublicRepository, ArticleData>() {
 
     var id = 0
+    val collectLiveData = MutableLiveData<Int>()
 
     override fun getRepository() = PublicRepository()
 
@@ -23,5 +24,16 @@ class PublicViewModel : BasePagingViewModel<PublicRepository, ArticleData>() {
     fun getWxArticle(): LiveData<List<WxArticleData>> {
         return chaptersLiveData.launch { repo.getWxArticle() }
     }
+
+    fun collectArticle(id: Int, collect: Boolean, position: Int) =
+        collectLiveData.launch {
+            if (collect) {
+                repo.unCollectArticle(id)
+                position
+            } else {
+                repo.collectArticle(id)
+                position
+            }
+        }
 
 }

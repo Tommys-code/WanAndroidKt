@@ -1,6 +1,5 @@
 package com.tommy.shen.module_common.base
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -25,6 +24,19 @@ abstract class BasePagingRecycleAdapter<T : Any, VD : ViewDataBinding>(
 
     override fun onBindViewHolder(holder: RecyclerCompatVH<VD>, position: Int) {
         onBindViewHolderCompat(holder.binding, position)
+    }
+
+    override fun onBindViewHolder(
+        holder: RecyclerCompatVH<VD>,
+        position: Int,
+        payloads: MutableList<Any>
+    ) {
+        if (payloads.isNotEmpty()) onBindViewHolderCompat(holder.binding, position, payloads)
+        else super.onBindViewHolder(holder, position, payloads)
+    }
+
+    open fun onBindViewHolderCompat(binding: VD, position: Int, payloads: MutableList<Any>) {
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerCompatVH<VD> {

@@ -4,6 +4,8 @@ import android.util.Log
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.tommy.shen.module_common.base.BaseRepository
+import com.tommy.shen.module_common.data.BaseResult
+import com.tommy.shen.module_common.util.ToastUtils
 import com.tommy.shen.module_home.SEARCH_HISTORY
 import com.tommy.shen.module_home.data.BannerData
 import com.tommy.shen.module_home.net.Instance
@@ -14,15 +16,15 @@ class HomeRepository : BaseRepository() {
 
     private val api = Instance.api
 
-    suspend fun getBannerInfo(): List<BannerData> = request {
-        Log.i("api",api.toString())
+    suspend fun getBannerInfo()= request {
+        Log.i("api", api.toString())
         api.getBanner()
     }
 
     suspend fun getArticleList(pageNum: Int) = request { api.getArticleList(pageNum) }
 
     suspend fun getHotKey() = request {
-        Log.i("api",api.toString())
+        Log.i("api", api.toString())
         api.getHotKey()
     }
 
@@ -52,5 +54,9 @@ class HomeRepository : BaseRepository() {
     suspend fun deleteHistoryKey() {
         withContext(Dispatchers.IO) { db.myDao().delete(SEARCH_HISTORY) }
     }
+
+    suspend fun collectArticle(id: Int) = request { api.collect(id) }
+
+    suspend fun unCollectArticle(id: Int) = request { api.unCollectArticle(id) }
 
 }

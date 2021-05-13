@@ -1,6 +1,7 @@
 package com.tommy.shen.module_project.fragment
 
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import com.alibaba.android.arouter.facade.annotation.Autowired
@@ -8,6 +9,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.tommy.shen.module_common.base.BaseFragment
 import com.tommy.shen.module_common.constant.Project
+import com.tommy.shen.module_common.util.ToastUtils
 import com.tommy.shen.module_common.util.init
 import com.tommy.shen.module_project.R
 import com.tommy.shen.module_project.adapter.ProjectListAdapter
@@ -45,6 +47,16 @@ class ProjectListFragment : BaseFragment<FragProjectListBinding>() {
                 is LoadState.Error -> binding.refresh.isRefreshing = false
             }
         }
+        adapter.setOnCollectedListener { collect, id, position ->
+            viewModel.collectArticle(id, collect, position)
+        }
+        viewModel.collectLiveData.observe(this, Observer {
+            val isCollect = adapter.setItemCollected(it)
+            ToastUtils.showSnackBar(
+                binding.root,
+                if (isCollect) R.string.home_collect_success else R.string.home_un_collect_success
+            )
+        })
     }
 
 

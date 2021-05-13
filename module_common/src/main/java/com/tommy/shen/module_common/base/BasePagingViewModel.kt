@@ -28,11 +28,10 @@ abstract class BasePagingViewModel<T : BaseRepository, Value : Any> : BaseViewMo
                         //没有更多数据
                         null
                     }
-                    val prevPage = if (currentPage > 0) currentPage - 1 else null
                     if (demoReqData != null) {
                         LoadResult.Page(
                             data = demoReqData.datas,
-                            prevKey = prevPage,
+                            prevKey = null,
                             nextKey = nextPage
                         )
                     } else {

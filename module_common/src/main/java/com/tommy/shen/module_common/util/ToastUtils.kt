@@ -3,6 +3,7 @@ package com.tommy.shen.module_common.util
 import android.content.Context
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.StringRes
 import com.google.android.material.snackbar.Snackbar
 import com.tommy.shen.module_common.app.BaseApplication
 
@@ -39,6 +40,13 @@ class ToastUtils {
 
         fun showSnackBar(
             view: View, text: CharSequence,
+            duration: Int = Snackbar.LENGTH_SHORT
+        ) {
+            Snackbar.make(view, text, duration).show()
+        }
+
+        fun showSnackBar(
+            view: View, @StringRes text: Int,
             duration: Int = Snackbar.LENGTH_SHORT
         ) {
             Snackbar.make(view, text, duration).show()
