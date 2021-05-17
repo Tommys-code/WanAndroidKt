@@ -7,6 +7,7 @@ import com.tommy.shen.module_my.data.ArticleData
 import com.tommy.shen.module_my.data.CoinData
 import com.tommy.shen.module_my.data.CoinListData
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface MineService {
@@ -19,6 +20,9 @@ interface MineService {
 
     @GET("lg/collect/list/{pageNum}/json")
     suspend fun getCollectList(@Path("pageNum") pageNum: Int): BaseResult<BaseListData<ArticleData>>
+
+    @POST("lg/uncollect_originId/{id}/json")
+    suspend fun unCollectArticle(@Path("id") id: Int): BaseResult<Any?>
 
 }
 

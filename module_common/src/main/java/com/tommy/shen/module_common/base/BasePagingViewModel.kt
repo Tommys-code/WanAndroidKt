@@ -3,6 +3,8 @@ package com.tommy.shen.module_common.base
 import androidx.lifecycle.viewModelScope
 import androidx.paging.*
 import com.tommy.shen.module_common.data.BaseListData
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.map
 
 abstract class BasePagingViewModel<T : BaseRepository, Value : Any> : BaseViewModel<T>() {
 
@@ -10,9 +12,9 @@ abstract class BasePagingViewModel<T : BaseRepository, Value : Any> : BaseViewMo
 
     abstract suspend fun getData(pageNum: Int): BaseListData<Value>?
 
-    val listData = getPager().flow.cachedIn(viewModelScope)
+    open val listData = getPager().flow.cachedIn(viewModelScope)
 
-    private fun getPager() = Pager(PagingConfig(pageSize = 6)) {
+    fun getPager() = Pager(PagingConfig(pageSize = 6)) {
         object : PagingSource<Int, Value>() {
             override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Value> {
                 return try {

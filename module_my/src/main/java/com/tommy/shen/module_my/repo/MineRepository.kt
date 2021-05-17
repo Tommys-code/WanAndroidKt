@@ -12,4 +12,6 @@ class MineRepository : BaseRepository() {
 
     suspend fun getCollectList(pageNum: Int) = request { api.getCollectList(pageNum) }
 
+    suspend fun unCollectArticle(id: Int) = request { api.unCollectArticle(id) }
+
 }

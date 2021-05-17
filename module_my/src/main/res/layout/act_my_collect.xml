@@ -24,27 +24,27 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <!-- <FrameLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="match_parent">-->
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycle"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipToPadding="false"
-                android:paddingVertical="5dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:visibleGone="@{type == 0}" />
+                android:layout_height="match_parent">
 
-            <!-- <include
-                 android:id="@+id/empty"
-                 layout="@layout/empty_stub"
-                 app:type="@{type}"
-                 android:layout_width="match_parent"
-                 android:layout_height="match_parent" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:paddingVertical="5dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:visibleGone="@{type == 0}" />
 
-         </FrameLayout>-->
+                <include
+                    android:id="@+id/empty"
+                    layout="@layout/empty_stub"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:type="@{type}" />
+
+            </FrameLayout>
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

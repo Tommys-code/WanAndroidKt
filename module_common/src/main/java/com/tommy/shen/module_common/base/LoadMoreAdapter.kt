@@ -42,7 +42,7 @@ class LoadMoreAdapter(private val retryCallBack: () -> Unit) :
     }
 
     override fun displayLoadStateAsItem(loadState: LoadState): Boolean {
-        return super.displayLoadStateAsItem(loadState) || loadState is LoadState.NotLoading
+        return super.displayLoadStateAsItem(loadState) || (loadState is LoadState.NotLoading && loadState.endOfPaginationReached)
     }
 
 }

@@ -1,7 +1,7 @@
 package com.tommy.shen.module_my.act
 
-import android.util.Log
 import androidx.activity.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
@@ -30,7 +30,7 @@ class MyCollectAct : BaseActivity<ActMyCollectBinding>() {
         binding.toolbar.init(getString(R.string.my_collect))
 
         binding.refresh.init { adapter.refresh() }
-//        binding.empty.error.setOnClickListener { adapter.retry() }
+        binding.empty.error.setOnClickListener { adapter.retry() }
 
         binding.recycle.isFocusableInTouchMode = false
         binding.recycle.adapter = adapter.withLoadStateFooter(LoadMoreAdapter { adapter.retry() })
@@ -38,15 +38,17 @@ class MyCollectAct : BaseActivity<ActMyCollectBinding>() {
         lifecycleScope.launch {
             viewModel.listData.collectLatest { adapter.submitData(it) }
         }
-//        adapter.addLoadStateListener { loadState ->
-//            loadState.decideOnState(showLoading = {
-//                binding.refresh.isRefreshing = it
-//            }, showEmptyState = {
-//                binding.type = if (it) 1 else binding.type
-//            }, showError = {
-//                binding.type = if (it) 2 else binding.type
-//            })
-//        }
+        adapter.addLoadStateListener { loadState ->
+            loadState.decideOnState(showLoading = {
+                binding.refresh.isRefreshing = it
+            }, showEmptyState = {
+                binding.type = if (it) 1 else binding.type
+            }, showError = {
+                binding.type = if (it) 2 else binding.type
+            })
+        }
+        adapter.setOnCollectedListener { id, position -> viewModel.unCollectArticle(id, position) }
+        viewModel.unCollectLiveData.observe(this, Observer { adapter.refresh() })
     }
 
     private inline fun CombinedLoadStates.decideOnState(

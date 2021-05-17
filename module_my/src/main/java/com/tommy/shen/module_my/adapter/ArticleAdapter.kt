@@ -22,7 +22,17 @@ class ArticleAdapter : BasePagingRecycleAdapter<ArticleData, ItemMyArticleBindin
         getItem(position)?.run {
             binding.data = this
             binding.root.setOnClickListener { openWeb(link, title, id) }
+            binding.collectTv.setOnClickListener {
+                collect = false
+                onCollectListener?.invoke(originId, position)
+            }
         }
+    }
+
+    private var onCollectListener: ((id: Int, position: Int) -> Unit)? = null
+
+    fun setOnCollectedListener(onCollectListener: ((id: Int, position: Int) -> Unit)) {
+        this.onCollectListener = onCollectListener
     }
 
 }
