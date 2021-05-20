@@ -4,5 +4,6 @@
     <application>
         <activity android:name=".act.MyScoreAct" />
         <activity android:name=".act.MyCollectAct" />
+        <activity android:name=".act.SettingAct" />
     </application>
 </manifest>

@@ -32,6 +32,7 @@ abstract class BaseViewModel<T : BaseRepository> : ViewModel() {
                         if (isShowError) ToastUtils.showToast(e.msg)
                         onError?.invoke(e.errorCode)
                     }
+                    else -> if (isShowError) ToastUtils.showToast("网络异常")
                 }
             } finally {
                 dismissLoading()
@@ -58,6 +59,7 @@ abstract class BaseViewModel<T : BaseRepository> : ViewModel() {
                         if (isShowError) ToastUtils.showToast(e.msg)
                         onError?.invoke(e.errorCode)
                     }
+                    else -> if (isShowError) ToastUtils.showToast("网络异常")
                 }
             } finally {
                 dismissLoading()

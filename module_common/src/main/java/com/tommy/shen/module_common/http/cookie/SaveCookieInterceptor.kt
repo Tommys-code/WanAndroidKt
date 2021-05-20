@@ -1,6 +1,7 @@
 package com.tommy.shen.module_common.http.cookie
 
 import com.tencent.mmkv.MMKV
+import com.tommy.shen.module_common.util.logout
 import okhttp3.Interceptor
 import okhttp3.Response
 
@@ -9,6 +10,7 @@ class SaveCookieInterceptor : Interceptor {
     companion object {
         const val SAVE_USER_LOGIN_KEY = "user/login"
         const val SAVE_USER_REGISTER_KEY = "user/register"
+        const val LOGOUT_KEY = "user/logout"
 
         const val SET_COOKIE_KEY = "set-cookie"
 
@@ -29,17 +31,19 @@ class SaveCookieInterceptor : Interceptor {
         ) {
             val cookies = response.headers(SET_COOKIE_KEY)
             saveCookie(domain, parseCookie(cookies))
+        } else if (requestUrl.contains(LOGOUT_KEY)) {
+            clearCookie()
         }
         return response
     }
 
     private fun parseCookie(it: List<String>): String {
-        if(it.isEmpty()) return ""
+        if (it.isEmpty()) return ""
         val stringBuilder = StringBuilder()
         it.forEach { cookie ->
             stringBuilder.append(cookie).append(";")
         }
-        if(stringBuilder.isEmpty()){
+        if (stringBuilder.isEmpty()) {
             return ""
         }
         //末尾的";"去掉
@@ -48,5 +52,10 @@ class SaveCookieInterceptor : Interceptor {
 
     private fun saveCookie(domain: String, cookies: String) {
         cookieMMkv?.encode(domain, cookies)
+    }
+
+    private fun clearCookie(){
+        cookieMMkv?.clearAll()
+        logout()
     }
 }

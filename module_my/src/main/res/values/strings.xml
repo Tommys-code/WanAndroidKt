@@ -11,4 +11,8 @@
     <string name="my_new">新</string>
     <string name="my_author">作者：%1$s</string>
     <string name="my_share_user">分享人：%1$s</string>
+    <string name="my_setting">设置</string>
+    <string name="my_exit">退出登录</string>
+    <string name="my_login">登录</string>
+    <string name="my_confirm_logout">确定退出登录吗？</string>
 </resources>

@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
+import androidx.paging.PagingDataAdapter
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.tommy.shen.module_common.base.BaseActivity
 import com.tommy.shen.module_common.base.LoadMoreAdapter

@@ -12,6 +12,9 @@ import retrofit2.http.Path
 
 interface MineService {
 
+    @GET("user/logout/json")
+    suspend fun logout(): BaseResult<Any>
+
     @GET("lg/coin/userinfo/json")
     suspend fun getCoin(): BaseResult<CoinData>
 

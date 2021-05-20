@@ -30,3 +30,7 @@ fun isLogin(id: Int?): Boolean {
     return id ?: -1 > 0
 }
 
+fun logout() {
+    MMKV.mmkvWithID(USER)?.clearAll()
+}
+

@@ -26,9 +26,6 @@ class HomeArticleAdapter : BasePagingRecycleAdapter<ArticleData, ItemArticleBind
             binding.data = this
             binding.collect = collect
             binding.root.setOnClickListener { openWeb(link, title, id) }
-            binding.collectTv.setOnClickListener {
-                onCollectListener?.invoke(collect, id, position)
-            }
             binding.collectTv.clickDelay {
                 onCollectListener?.invoke(collect, id, position)
             }

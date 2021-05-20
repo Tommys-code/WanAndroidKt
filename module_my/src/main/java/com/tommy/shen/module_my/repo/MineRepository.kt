@@ -6,6 +6,8 @@ class MineRepository : BaseRepository() {
 
     private val api = Instance.api
 
+    suspend fun logout() = request { api.logout() }
+
     suspend fun getCoin() = request("COIN") { api.getCoin() }
 
     suspend fun getCoinList(pageNum: Int) = request { api.getCoinList(pageNum) }
