@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -32,6 +33,9 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    androidExtensions {
+        experimental = true
     }
     buildFeatures {
         dataBinding true
@@ -71,6 +75,6 @@ dependencies {
     api rootProject.ext.dependencies["mmkv"]
     api rootProject.ext.dependencies["live_event_bus"]
 
-    kapt  rootProject.ext.dependencies["arouter_compiler"]
+    kapt rootProject.ext.dependencies["arouter_compiler"]
 
 }

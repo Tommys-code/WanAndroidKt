@@ -38,7 +38,7 @@ ext {
             "converter-moshi"    : "com.squareup.retrofit2:converter-moshi:2.9.0",
             "logging-interceptor": "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2",
             "flexbox"            : "com.google.android:flexbox:1.1.0",
-            "mmkv"               : "com.tencent:mmkv-static:1.2.7",
+            "mmkv"               : "com.tencent:mmkv-static:1.2.9",
             "live_event_bus"     : "io.github.jeremyliao:live-event-bus-x:1.8.0"
     ]
 }

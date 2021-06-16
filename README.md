@@ -13,6 +13,9 @@
 ## 组件配置
 gradle.properties 中 isModule 进行配置
 
+## 其它
+玩安卓[flutter版本](https://github.com/Tommys-code/WanAndroidFlutter)
+
 
 
 

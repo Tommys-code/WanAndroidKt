@@ -29,17 +29,17 @@ class SearchKeyViewModel : BaseViewModel<HomeRepository>() {
     fun saveHistoryKey(key: String) {
         if (key.isEmpty()) return
         viewModelScope.launch {
-            val data = (historyKeyData.value?: emptyList()).toMutableList()
+            val data = (historyKeyData.value ?: emptyList()).toMutableList()
             data.apply {
                 remove(key)
-                add(0,key)
+                add(0, key)
             }.take(10)
             repo.saveHistoryKey(data)
             historyKeyData.postValue(data)
         }
     }
 
-    fun deleteHistory(){
+    fun deleteHistory() {
         viewModelScope.launch {
             repo.deleteHistoryKey()
             historyKeyData.postValue(null)
